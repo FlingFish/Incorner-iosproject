@@ -624,7 +624,7 @@
 		047909401A6FA45700CA5BE8 /* BeenEvaluatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeenEvaluatedViewController.h; sourceTree = "<group>"; };
 		047909411A6FA45700CA5BE8 /* BeenEvaluatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeenEvaluatedViewController.m; sourceTree = "<group>"; };
 		047B5DCA1A8D011F00FC4A99 /* AddTCourseTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTCourseTimeViewController.h; path = ../AddTCourseTimeViewController.h; sourceTree = "<group>"; };
-		047B5DCB1A8D011F00FC4A99 /* AddTCourseTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTCourseTimeViewController.m; path = ../AddTCourseTimeViewController.m; sourceTree = "<group>"; };
+		047B5DCB1A8D011F00FC4A99 /* AddTCourseTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTCourseTimeViewController.m; path = ../AddTCourseTimeViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		0482ADAF1A8090FF00AFB5B1 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		0482ADB11A8090FF00AFB5B1 /* AnimatedAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedAnnotation.h; sourceTree = "<group>"; };
 		0482ADB21A8090FF00AFB5B1 /* AnimatedAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedAnnotation.m; sourceTree = "<group>"; };
@@ -651,11 +651,11 @@
 		0482ADC81A8090FF00AFB5B1 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
 		0482ADC91A8090FF00AFB5B1 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
 		0482ADD91A8091B400AFB5B1 /* AddTCourseMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTCourseMoreViewController.h; path = ../AddTCourseMoreViewController.h; sourceTree = "<group>"; };
-		0482ADDA1A8091B400AFB5B1 /* AddTCourseMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTCourseMoreViewController.m; path = ../AddTCourseMoreViewController.m; sourceTree = "<group>"; };
+		0482ADDA1A8091B400AFB5B1 /* AddTCourseMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTCourseMoreViewController.m; path = ../AddTCourseMoreViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		0482ADDB1A8091B400AFB5B1 /* AddTCourseNextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTCourseNextViewController.h; path = ../AddTCourseNextViewController.h; sourceTree = "<group>"; };
 		0482ADDC1A8091B400AFB5B1 /* AddTCourseNextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTCourseNextViewController.m; path = ../AddTCourseNextViewController.m; sourceTree = "<group>"; };
 		0482ADDD1A8091B400AFB5B1 /* AddTCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTCourseViewController.h; path = ../AddTCourseViewController.h; sourceTree = "<group>"; };
-		0482ADDE1A8091B400AFB5B1 /* AddTCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTCourseViewController.m; path = ../AddTCourseViewController.m; sourceTree = "<group>"; };
+		0482ADDE1A8091B400AFB5B1 /* AddTCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTCourseViewController.m; path = ../AddTCourseViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		0482ADDF1A8091B400AFB5B1 /* PickAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickAddressViewController.h; path = ../PickAddressViewController.h; sourceTree = "<group>"; };
 		0482ADE01A8091B400AFB5B1 /* PickAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickAddressViewController.m; path = ../PickAddressViewController.m; sourceTree = "<group>"; };
 		048B7B221A6E2909004E1C00 /* PersonalInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoCell.h; sourceTree = "<group>"; };
@@ -1039,7 +1039,7 @@
 		186153A01A4C044B002F375E /* CourseApplyMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseApplyMessageViewController.h; sourceTree = "<group>"; };
 		186153A11A4C044B002F375E /* CourseApplyMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseApplyMessageViewController.m; sourceTree = "<group>"; };
 		186153A21A4C044B002F375E /* EvaluateTCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluateTCourseViewController.h; sourceTree = "<group>"; };
-		186153A31A4C044B002F375E /* EvaluateTCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluateTCourseViewController.m; sourceTree = "<group>"; };
+		186153A31A4C044B002F375E /* EvaluateTCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluateTCourseViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		186153A61A4C044B002F375E /* GroupChattingMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChattingMessageViewController.h; sourceTree = "<group>"; };
 		186153A71A4C044B002F375E /* GroupChattingMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChattingMessageViewController.m; sourceTree = "<group>"; };
 		186153A81A4C044B002F375E /* MessageCenterScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageCenterScreenViewController.h; path = "通知/Controller/MessageCenterScreenViewController.h"; sourceTree = "<group>"; };
@@ -2909,6 +2909,7 @@
 				186153E51A4C1759002F375E /* Helper */,
 				186153E11A4C07F9002F375E /* RootNavigationController */,
 				18B0277F1A4B07EE00715CB3 /* 登录注册 */,
+				18B027871A4B07EE00715CB3 /* 首页 */,
 				18B027831A4B07EE00715CB3 /* 公众 */,
 				18B0278B1A4B07EE00715CB3 /* 我 */,
 				18B0278F1A4B07EE00715CB3 /* 消息 */,
@@ -2955,7 +2956,6 @@
 		18B0277F1A4B07EE00715CB3 /* 登录注册 */ = {
 			isa = PBXGroup;
 			children = (
-				18B027871A4B07EE00715CB3 /* 首页 */,
 				187F195E1A7B5F890052ED99 /* Register */,
 				187F195D1A7B5F7F0052ED99 /* Login */,
 				185DF0961A5121E600CF7672 /* LoginHelper */,
@@ -3037,8 +3037,7 @@
 				18B027891A4B07EE00715CB3 /* Model */,
 				18B0278A1A4B07EE00715CB3 /* View */,
 			);
-			name = "首页";
-			path = "../首页";
+			path = "首页";
 			sourceTree = "<group>";
 		};
 		18B027881A4B07EE00715CB3 /* Controller */ = {

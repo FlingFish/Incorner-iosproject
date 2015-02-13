@@ -100,7 +100,7 @@
     bTimeLB.backgroundColor = [UIColor whiteColor];
     [bTimeLB.layer setMasksToBounds:YES];
     [bTimeLB.layer setCornerRadius:5];
-    [bTimeLB.layer setBorderWidth:0.6];
+    [bTimeLB.layer setBorderWidth:0.1];
     bTimeLB.tag = 100;
     [self.view addSubview:bTimeLB];
     
@@ -125,7 +125,7 @@
     endTimeLB.backgroundColor = [UIColor whiteColor];
     [endTimeLB.layer setMasksToBounds:YES];
     [endTimeLB.layer setCornerRadius:5];
-    [endTimeLB.layer setBorderWidth:0.6];
+    [endTimeLB.layer setBorderWidth:0.1];
     endTimeLB.tag = 101;
     [self.view addSubview:endTimeLB];
     
@@ -136,6 +136,15 @@
 - (void)timeBtnClicked:(UIButton *)btn
 {
     btnTag = btn.tag;
+    UIButton *bTimeBtn = (UIButton *)[self.view viewWithTag:1000];
+    UIButton *endTimeBtn = (UIButton *)[self.view viewWithTag:2000];
+    if (btnTag == 1000) {
+        [bTimeBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [endTimeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }else if (btnTag == 2000){
+        [bTimeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [endTimeBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }
 }
 #pragma mark - DatePicker Methods
 // 日期选择

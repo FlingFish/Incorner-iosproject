@@ -25,6 +25,8 @@
     CGFloat                btnHeight;
 }
 
+@property (nonatomic, strong) URBAlertView * alertView;
+
 @property (nonatomic, assign) BOOL isMoveUp; // 是否上移
 
 @end
@@ -164,7 +166,7 @@
     typetagTF.backgroundColor = RGB(128, 128, 128, 0.1);
     typetagTF.font = [UIFont systemFontOfSize:14.0];
     [typetagTF.layer setCornerRadius:5];
-    [typetagTF.layer setBorderWidth:0.6];
+    [typetagTF.layer setBorderWidth:0.1];
     [typetagBG addSubview:typetagTF];
     
     // 课程标题和标题输入框背景
@@ -180,6 +182,7 @@
     titleBtn.contentHorizontalAlignment =UIControlContentHorizontalAlignmentCenter;
     titleBtn.backgroundColor = ButtonColor ;
     [titleBtn.layer setMasksToBounds:YES];
+    [titleBtn.layer setBorderWidth:0.1];
     [titleBtn.layer setCornerRadius:5];
     [titleBG addSubview:titleBtn];
     
@@ -192,7 +195,7 @@
     titleTF.returnKeyType = UIReturnKeyDone;
     titleTF.font = [UIFont systemFontOfSize:14.0];
     [titleTF.layer setCornerRadius:5];
-    [titleTF.layer setBorderWidth:0.6];
+    [titleTF.layer setBorderWidth:0.1];
     [titleBG addSubview:titleTF];
 
 }
@@ -366,10 +369,48 @@
 // 跳转到下一步页面
 -(void)nextBtnClicked
 {
-    AddTCourseMoreViewController *moreVC = [[AddTCourseMoreViewController alloc] init];
-    moreVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    moreVC.superNvc = self.superNvc;
-    [self.superNvc pushViewController:moreVC animated:YES];
+    __weak typeof(self) weakSelf = self;
+    UIButton *picktypeBtn = (UIButton *)[superBG viewWithTag:201];
+    UITextField *titleTF = (UITextField *)[superBG viewWithTag:401];
+    UITextField *typetagTF = (UITextField *)[superBG viewWithTag:402];
+    NSString *aStr = picktypeBtn.titleLabel.text;
+    NSString *bStr = titleTF.text;
+    NSString *cStr = typetagTF.text;
+    NSLog(@"%@",aStr);
+    NSLog(@"%@",bStr);
+    NSLog(@"%@",cStr);
+    
+    NSString *typeStr = @"点这选个类型";
+    NSString *titleTFStr = @"点这加个标题呗";
+    NSString *typetagTFStr = @"这可以写标签";
+    if( aStr.length == 0 || bStr.length == 0 || cStr.length == 0){
+        
+        _alertView = [URBAlertView dialogWithTitle:@"请确认您输入的课程信息完整！" subtitle:nil];
+        [_alertView addButtonWithTitle:@"确定"];
+        [_alertView showWithAnimation:URBAlertAnimationTumble];
+        [_alertView setHandlerBlock:^(NSInteger buttonIndex, URBAlertView *alertView) {
+            [weakSelf.alertView hideWithAnimation:URBAlertAnimationTumble];
+        }];
+        return;
+    }else {
+     
+        if ([aStr isEqualToString:typeStr] || [bStr isEqualToString:titleTFStr] || [cStr isEqualToString:typetagTFStr]) {
+            _alertView = [URBAlertView dialogWithTitle:@"请确认您输入的课程信息完整！" subtitle:nil];
+            [_alertView addButtonWithTitle:@"确定"];
+            [_alertView showWithAnimation:URBAlertAnimationTumble];
+            [_alertView setHandlerBlock:^(NSInteger buttonIndex, URBAlertView *alertView) {
+                [weakSelf.alertView hideWithAnimation:URBAlertAnimationTumble];
+            }];
+            return;
+        }else{
+            AddTCourseMoreViewController *moreVC = [[AddTCourseMoreViewController alloc] init];
+            moreVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            moreVC.superNvc = self.superNvc;
+            [self.superNvc pushViewController:moreVC animated:YES];
+        }
+    }
+
+
 }
 
 /**

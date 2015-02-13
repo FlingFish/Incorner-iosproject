@@ -196,7 +196,7 @@ static CGFloat KImageOrginalHeight = 0;
         superBGView.frame = frame;
         _zoomImageView.frame = CGRectMake(0,0, SCREEN_SIZE.width, superBGView.frame.size.height-50);
         courseBGView.frame = CGRectMake(0,superBGView.frame.size.height-50, SCREEN_SIZE.width, 50);
-        header.frame = CGRectMake(20, _zoomImageView.frame.size.height-120, 50, 50);
+        header.frame = CGRectMake(20, _zoomImageView.frame.size.height-117, 50, 50);
         nickNameLabel.frame = CGRectMake(CGRectGetMaxX(header.frame) + 10, header.frame.origin.y + 10, 100, 20);
         
     }

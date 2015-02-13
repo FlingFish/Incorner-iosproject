@@ -26,6 +26,8 @@
 
 @property (nonatomic, assign) OnlineState state;
 
+@property (nonatomic, strong) URBAlertView * alertView;
+
 @property (nonatomic, assign) FreeState freestate;
 
 @end
@@ -37,8 +39,9 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     UIBarButtonItem * backItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    
     UIBarButtonItem *next = [[UIBarButtonItem alloc]initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(nextBtnClicked)];
-
+    
     UILabel * titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
     titleView.text = @"发布课程(2/4)";
     titleView.textColor = [UIColor whiteColor];
@@ -159,7 +162,6 @@
     
     //价格输入框
     UITextField *priceTF = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(paymentBtn.frame)+65,  CGRectGetMaxY(isneedPayBtn.frame)+1, 80, btnHeight - 2)];
-    priceTF.placeholder = @"开个价";
     priceTF.backgroundColor = RGB(128, 128, 128, 0.1);
     priceTF.delegate = self ;
     priceTF.tag = 403 ;
@@ -168,7 +170,7 @@
     priceTF.font = [UIFont systemFontOfSize:14.0];
     priceTF.hidden =YES;
     [priceTF.layer setCornerRadius:5];
-    [priceTF.layer setBorderWidth:0.6];
+    [priceTF.layer setBorderWidth:0.1];
     [paymentBG addSubview:priceTF];
     
     //价格标签
@@ -195,14 +197,13 @@
     [maxMumberBG addSubview:maxMumBtn];
     
     UITextField *maxMunTF = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(paymentBtn.frame)+65, 1, 80, btnHeight-2)];
-    maxMunTF.placeholder = @"填写人数";
     maxMunTF.backgroundColor = RGB(128, 128, 128, 0.1);
     maxMunTF.delegate = self ;
     maxMunTF.tag = 400 ;
     maxMunTF.keyboardType = UIKeyboardTypeNumberPad;
     maxMunTF.font = [UIFont systemFontOfSize:14.0];
     [maxMunTF.layer setCornerRadius:5];
-    [maxMunTF.layer setBorderWidth:0.6];
+    [maxMunTF.layer setBorderWidth:0.1];
     [maxMumberBG addSubview:maxMunTF];
     
     UILabel *perLB = [[ UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(maxMunTF.frame)+3, 1, 30, btnHeight-2)];
@@ -270,18 +271,88 @@
     UITextField *priceTF = (UITextField *)[superBG viewWithTag:403];
     [maxMumTF resignFirstResponder];
     [priceTF resignFirstResponder];
+    
+}
 
+// 检测用户输入人数是否含有其他字符
+- (BOOL)validateNumberic:(NSString *)numberStr
+{
+    NSCharacterSet * charSet = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
+    NSRange range = [numberStr rangeOfCharacterFromSet:charSet];
+    
+    return (range.location == NSNotFound) ? NO : YES;
 }
 
 #pragma mark - push NavigationController
 // 跳转到下一步页面
 -(void)nextBtnClicked
 {
-    AddTCourseNextViewController *nextVC = [[AddTCourseNextViewController alloc] init];
-    nextVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    nextVC.state = self.state;
-    nextVC.superNvc = self.superNvc;
-    [self.superNvc pushViewController:nextVC animated:YES];
+    __weak typeof(self) weakSelf = self;
+    UITextField *maxMumTF = (UITextField *)[superBG viewWithTag:400];
+    UITextField *priceTF = (UITextField *)[superBG viewWithTag:403];
+    // 判断用户是否输入了除了数字之外的字符
+    BOOL Valid = [self validateNumberic:maxMumTF.text];
+    BOOL isValid = [self validateNumberic:priceTF.text];
+    if (self.freestate == Free) {
+        if (maxMumTF.text.length == 0 ) {
+            _alertView = [URBAlertView dialogWithTitle:@"请您输入完整的课程信息！" subtitle:nil];
+            [_alertView addButtonWithTitle:@"确定"];
+            [_alertView showWithAnimation:URBAlertAnimationTumble];
+            [_alertView setHandlerBlock:^(NSInteger buttonIndex, URBAlertView *alertView) {
+                [weakSelf.alertView hideWithAnimation:URBAlertAnimationTumble];
+            }];
+            return;
+        }else if (maxMumTF.text.length > 2 || Valid) {
+            
+            _alertView = [URBAlertView dialogWithTitle:@"请输入合理的人数，0~99人" subtitle:nil];
+            [_alertView addButtonWithTitle:@"确定"];
+            [_alertView showWithAnimation:URBAlertAnimationTumble];
+            [_alertView setHandlerBlock:^(NSInteger buttonIndex, URBAlertView *alertView) {
+                [weakSelf.alertView hideWithAnimation:URBAlertAnimationTumble];
+            }];
+            return;
+        }else {
+            // push
+            AddTCourseNextViewController *nextVC = [[AddTCourseNextViewController alloc] init];
+            nextVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            nextVC.state = self.state;
+            nextVC.superNvc = self.superNvc;
+            [self.superNvc pushViewController:nextVC animated:YES];
+        }
+    }else if (self.freestate == NeedPay) {
+        if (maxMumTF.text.length == 0  || priceTF.text.length == 0) {
+            _alertView = [URBAlertView dialogWithTitle:@"请您输入完整的课程信息！" subtitle:nil];
+            [_alertView addButtonWithTitle:@"确定"];
+            [_alertView showWithAnimation:URBAlertAnimationTumble];
+            [_alertView setHandlerBlock:^(NSInteger buttonIndex, URBAlertView *alertView) {
+                [weakSelf.alertView hideWithAnimation:URBAlertAnimationTumble];
+            }];
+            return;
+        }else if ( priceTF.text.length > 8 || isValid) {
+            _alertView = [URBAlertView dialogWithTitle:@"请输入合理的数字价格" subtitle:nil];
+            [_alertView addButtonWithTitle:@"确定"];
+            [_alertView showWithAnimation:URBAlertAnimationTumble];
+            [_alertView setHandlerBlock:^(NSInteger buttonIndex, URBAlertView *alertView) {
+                [weakSelf.alertView hideWithAnimation:URBAlertAnimationTumble];
+            }];
+            return;
+        }else if ( maxMumTF.text.length > 2 || isValid) {
+            _alertView = [URBAlertView dialogWithTitle:@"请输入合理的人数，1~99" subtitle:nil];
+            [_alertView addButtonWithTitle:@"确定"];
+            [_alertView showWithAnimation:URBAlertAnimationTumble];
+            [_alertView setHandlerBlock:^(NSInteger buttonIndex, URBAlertView *alertView) {
+                [weakSelf.alertView hideWithAnimation:URBAlertAnimationTumble];
+            }];
+            return;
+        }else {
+            // push
+            AddTCourseNextViewController *nextVC = [[AddTCourseNextViewController alloc] init];
+            nextVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            nextVC.state = self.state;
+            nextVC.superNvc = self.superNvc;
+            [self.superNvc pushViewController:nextVC animated:YES];
+        }
+    }
 }
 
 -(void)back

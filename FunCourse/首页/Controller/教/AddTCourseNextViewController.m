@@ -156,6 +156,9 @@
     remarkTF.font = [UIFont systemFontOfSize:14];
     remarkTF.tag = 402;
     remarkTF.delegate = self ;
+    [remarkTF.layer setMasksToBounds:YES];
+    [remarkTF.layer setCornerRadius:5];
+    [remarkTF.layer setBorderWidth:0.1];
     [remarkBG addSubview:remarkTF];
     
     UIView *introBG = [[UIView alloc] init];
@@ -185,6 +188,9 @@
     introTV.backgroundColor = RGB(128, 128, 128, 0.2);
     introTV.tag = 403;
     introTV.delegate = self;
+    [introTV.layer setMasksToBounds:YES];
+    [introTV.layer setCornerRadius:5];
+    [introTV.layer setBorderWidth:0.1];
     [introBG addSubview:introTV];
 }
 #pragma mark - pickAddressBtn Clicked 
@@ -309,7 +315,7 @@
 {
     UITextView *introTV = (UITextView *)[superBG viewWithTag:403];
     [introTV resignFirstResponder];
-    if (self.state == Online) {
+    if (self.state == Offline) {
         UITextField *remarkTF = (UITextField *)[superBG viewWithTag:402];
         [remarkTF resignFirstResponder];
     }
